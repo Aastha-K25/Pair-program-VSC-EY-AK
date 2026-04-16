@@ -1,0 +1,87 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script> 
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> 
+    <title>Music App</title>
+</head>
+
+<body>
+    <h1>Music App</h1>
+
+    <div id="app"> 
+
+        <h2>Get All etc (GET)</h2>
+        <button v-on:click="getAllMusic" class="btn btn-primary">Get all Music</button> 
+
+        <h2>Search Music</h2>
+        <input v-model="TitleToSearch" placeholder="Title" type="text" /> 
+        <input v-model="artistToSearch" placeholder="Artist" type="text" /> 
+        <button v-on:click="searchMusic" class="btn btn-primary">Search</button> 
+
+    
+        <div v-if="searchMessage" style="color:red">{{ searchMessage }}</div>
+
+        <ul v-if="musicList.length"> 
+            <li v-for="music in musicList" :key="music.id"> 
+                {{music.id}} {{music.title}} : {{ music.artist}}
+            </li>
+        </ul>
+        <div v-else>No Music found.</div>
+
+
+        <h2>Get by ID</h2>
+        <input v-model.number="idToGet" placeholder="id" type="number" />
+        <button v-on:click="getById" class="btn btn-primary">Get by ID</button>
+
+     
+        <div v-if="idMessage" style="color:red">{{ idMessage }}</div>
+
+        <div v-if="singleMusic">
+            {{ singleMusic.id }} - {{ singleMusic.title }} - {{ singleMusic.artist }}
+        </div>
+        <div v-else>No music found.</div>
+
+
+        <h2>Add Music</h2> 
+        <input v-model="addData.title" placeholder="title" type="text" />
+        <input v-model="addData.artist" placeholder="artist" type="text" />
+        <input v-model.number="addData.duration" placeholder="duration" type="number" />
+        <input v-model.number="addData.publicationYear" placeholder="Year" type="number" />
+        <button v-on:click="addMusic" class="btn btn-success">Add Music</button> 
+
+        
+        <div v-if="addMessage" style="color:green">{{ addMessage }}</div>
+        <div v-if="addError" style="color:red">{{ addError }}</div>
+
+
+        <h2>Delete Music</h2> 
+        <input v-model.number="deleteId" placeholder="id" type="number" />
+        <button v-on:click="deleteMusic(deleteId)" class="btn btn-warning">Delete music</button>
+
+       
+        <div v-if="deleteMessage" style="color:green">{{ deleteMessage }}</div>
+        <div v-if="deleteError" style="color:red">{{ deleteError }}</div>
+
+
+        <h2>Update Music</h2> 
+        <input v-model.number="updateData.id" placeholder="id" type="number" /> 
+        <input v-model="updateData.title" placeholder="title" type="text" />  
+        <input v-model="updateData.artist" placeholder="artist" type="text" />
+        <input v-model.number="updateData.duration" placeholder="duration" type="number" />
+        <input v-model.number="updateData.publicationYear" placeholder="Year" type="number" />
+        <button v-on:click="updateMusic()" class="btn btn-success">Update music</button> 
+
+    
+        <div v-if="updateMessage" style="color:green">{{ updateMessage }}</div>
+        <div v-if="updateError" style="color:red">{{ updateError }}</div>
+
+    </div>
+
+    <script src="Exercise.js"></script>
+</body>
+</html>
