@@ -14,6 +14,10 @@
     <h1>Music App</h1>
 
     <div id="app"> 
+        <h2>Login</h2>
+    <button v-on:click="login" class="btn btn-warning">Login</button>
+
+    <hr>
 
         <h2>Get All etc (GET)</h2>
         <button v-on:click="getAllMusic" class="btn btn-primary">Get all Music</button> 
@@ -35,8 +39,8 @@
 
 
         <h2>Get by ID</h2>
-        <input v-model.number="idToGet" placeholder="id" type="number" />
-        <button v-on:click="getById" class="btn btn-primary">Get by ID</button>
+        <input v-model="idToGet" placeholder="id">
+            <button v-on:click="getById" class="btn btn-primary">Get by ID</button>
 
      
         <div v-if="idMessage" style="color:red">{{ idMessage }}</div>
@@ -48,11 +52,12 @@
 
 
         <h2>Add Music</h2> 
-        <input v-model="addData.title" placeholder="title" type="text" />
-        <input v-model="addData.artist" placeholder="artist" type="text" />
-        <input v-model.number="addData.duration" placeholder="duration" type="number" />
-        <input v-model.number="addData.publicationYear" placeholder="Year" type="number" />
-        <button v-on:click="addMusic" class="btn btn-success">Add Music</button> 
+        <input v-model="addData.title" placeholder="title">
+        <input v-model="addData.artist" placeholder="artist">
+        <input v-model="addData.duration" placeholder="duration">
+        <input v-model="addData.publicationYear" placeholder="year">
+
+            <button v-on:click="addMusic" class="btn btn-warning">Add</button>
 
         
         <div v-if="addMessage" style="color:green">{{ addMessage }}</div>
@@ -60,8 +65,8 @@
 
 
         <h2>Delete Music</h2> 
-        <input v-model.number="deleteId" placeholder="id" type="number" />
-        <button v-on:click="deleteMusic(deleteId)" class="btn btn-warning">Delete music</button>
+        <input v-model="deleteId" placeholder="id">
+        <button v-on:click="deleteMusic(deleteId)" class="btn btn-danger">Delete</button>
 
        
         <div v-if="deleteMessage" style="color:green">{{ deleteMessage }}</div>
@@ -69,12 +74,13 @@
 
 
         <h2>Update Music</h2> 
-        <input v-model.number="updateData.id" placeholder="id" type="number" /> 
-        <input v-model="updateData.title" placeholder="title" type="text" />  
-        <input v-model="updateData.artist" placeholder="artist" type="text" />
-        <input v-model.number="updateData.duration" placeholder="duration" type="number" />
-        <input v-model.number="updateData.publicationYear" placeholder="Year" type="number" />
-        <button v-on:click="updateMusic()" class="btn btn-success">Update music</button> 
+        <input v-model="updateData.id" placeholder="id">
+        <input v-model="updateData.title" placeholder="title">
+        <input v-model="updateData.artist" placeholder="artist">
+        <input v-model="updateData.duration" placeholder="duration">
+        <input v-model="updateData.publicationYear" placeholder="year">
+
+        <button v-on:click="updateMusic" class="btn btn-warning">Update</button>
 
     
         <div v-if="updateMessage" style="color:green">{{ updateMessage }}</div>
