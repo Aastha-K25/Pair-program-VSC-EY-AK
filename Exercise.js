@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:5241/api/music";
+const baseUrl = "https://restmusicaasthaogeylem.azurewebsites.net/api/Music";
 
 Vue.createApp({
     data() {
@@ -42,7 +42,7 @@ Vue.createApp({
         // LOGIN
         async login() {
     try {
-        const response = await axios.post("http://localhost:5241/Auth/Login", {})
+        const response = await axios.post("https://restmusicaasthaogeylem.azurewebsites.net/Auth/Login", {})
 
         localStorage.setItem("token", response.data);
         alert("Du er logget ind!");
